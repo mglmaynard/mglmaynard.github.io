@@ -3,7 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
+  <title>Maynard's Data Portfolio</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Portfolio of Maynard, a data analyst passionate about data storytelling and analytics." />
+  <meta name="keywords" content="data analyst, portfolio, data visualization, analytics, Maynard" />
+  <meta name="author" content="Maynard" />
+  <meta property="og:title" content="Maynard's Data Portfolio" />
+  <meta property="og:description" content="Explore projects on data analysis, visualization, and storytelling." />
+  <meta property="og:image" content="logo/Logo.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="robots" content="index, follow" />
+
   <style>
     /* Reset and Base Styles */
     * {
@@ -23,7 +34,7 @@
     /* Logo Styles */
     .logo-container {
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 30px;
     }
 
     .logo {
@@ -33,15 +44,33 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
 
-    /* DateTime Styles */
-    .datetime {
+    /* Focus outline for accessibility */
+    a:focus, button:focus {
+      outline: 3px solid #BFA66B;
+      outline-offset: 2px;
+    }
+
+    /* Language switcher */
+    .lang-switcher {
       text-align: center;
-      font-size: 1rem;
-      color: #bbbbbb;
-      margin-bottom: 30px;
-      font-weight: 500;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      user-select: none;
+      margin-bottom: 20px;
+    }
+    .lang-switcher button {
+      background-color: transparent;
+      border: 2px solid #BFA66B;
+      color: #BFA66B;
+      padding: 6px 12px;
+      margin: 0 5px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .lang-switcher button:hover,
+    .lang-switcher button:focus {
+      background-color: #BFA66B;
+      color: black;
+      outline: none;
     }
 
     h1 {
@@ -100,7 +129,7 @@
       overflow: hidden;
     }
 
-    li:hover {
+    li:hover, li:focus-within {
       background-color: #2a2a2a;
       transform: translateY(-3px);
       box-shadow: 0 4px 12px rgba(191, 166, 107, 0.2);
@@ -117,7 +146,7 @@
       transition: height 0.4s ease;
     }
 
-    li:hover::before {
+    li:hover::before, li:focus-within::before {
       height: 100%;
     }
 
@@ -130,9 +159,10 @@
       transition: color 0.3s ease;
     }
 
-    a:hover {
+    a:hover, a:focus {
       color: #BFA66B;
       text-decoration: underline;
+      outline: none;
     }
 
     .description {
@@ -145,7 +175,7 @@
       margin-top: 8px;
     }
 
-    li:hover .description {
+    li:hover .description, li:focus-within .description {
       opacity: 1;
       max-height: 100px;
     }
@@ -178,76 +208,105 @@
 <body>
 
   <!-- Logo at the top -->
-  <div class="logo-container">
-    <img src="https://mglmaynard.github.io/Portfolio/logo/Logo.jpg" alt="My Logo" class="logo" />
-  </div>
+  <header class="logo-container" role="banner">
+    <img src="logo/Logo.jpg" alt="Maynard's Logo" class="logo" />
+  </header>
 
-  <!-- Date and Time -->
-  <div id="datetime" class="datetime"></div>
+  <!-- Language Switcher for Localization -->
+  <nav class="lang-switcher" aria-label="Language selection">
+    <button type="button" onclick="setLanguage('en')" aria-pressed="true" id="btn-en">English</button>
+    <button type="button" onclick="setLanguage('es')" aria-pressed="false" id="btn-es">Español</button>
+  </nav>
 
   <!-- Title with SVG -->
-  <h1>
-    <svg class="chart-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <polyline class="chart-path" points="5,45 20,30 35,40 50,25 60,35" />
-      <circle cx="5" cy="45" r="2" fill="silver" />
-      <circle cx="20" cy="30" r="2" fill="silver" />
-      <circle cx="35" cy="40" r="2" fill="silver" />
-      <circle cx="50" cy="25" r="2" fill="silver" />
-      <circle cx="60" cy="35" r="2" fill="silver" />
-    </svg>
-    My Portfolio Projects
-  </h1>
+  <main role="main">
+    <h1 id="title">
+      <svg class="chart-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <polyline class="chart-path" points="5,45 20,30 35,40 50,25 60,35" />
+        <circle cx="5" cy="45" r="2" fill="silver" />
+        <circle cx="20" cy="30" r="2" fill="silver" />
+        <circle cx="35" cy="40" r="2" fill="silver" />
+        <circle cx="50" cy="25" r="2" fill="silver" />
+        <circle cx="60" cy="35" r="2" fill="silver" />
+      </svg>
+      My Portfolio Projects
+    </h1>
 
-  <p style="text-align: center; font-size: 1.2rem; color: silver; margin-bottom: 30px;">
-    Hey there! Welcome to my portfolio! I'm thrilled to share the work that reflects my curiosity, creativity, and deep passion for data, analytics, and impactful storytelling. Thank you for stopping by. I hope you find something here that inspires or informs.
-  </p>
+    <p id="welcome" style="text-align: center; font-size: 1.2rem; color: silver; margin-bottom: 30px;">
+      Hey there! Welcome to my portfolio! I'm thrilled to share the work that reflects my curiosity, creativity, and deep passion for data, analytics, and impactful storytelling. Thank you for stopping by. I hope you find something here that inspires or informs.
+    </p>
 
-  <ul>
-    <li>
-      <a href="https://mglmaynard.github.io/Portfolio/2024-H1_2025_Consumer_Goods_of_the_Philippines_CPI.html" target="_blank">
-        2024 - H1 2025 Analysis of Consumer Price Index (CPI) of the Philippines
-      </a>
-      <div class="description">
-        A detailed CPI analysis using government datasets to understand macroeconomic trends and sector-specific price changes.
-      </div>
-    </li>
-    <li>
-      <a href="https://mglmaynard.github.io/Portfolio/Rental_Price_Distribution_Analysis_in_NCR_and_Region_IV-A_via_Kernel_Density_Estimation.html" target="_blank">
-        Rental Price Distribution Analysis in NCR and Region IV-A via Kernel Density Estimation
-      </a>
-      <div class="description">
-        Uses kernel density plots to compare and visualize rental pricing trends between two major Philippine regions.
-      </div>
-    </li>
-    <li>
-      <a href="https://github.com/yourusername/project3" target="_blank">
-        Project 3
-      </a>
-      <div class="description">
-        Placeholder description for a future project. Add details to describe purpose, tools, or insights.
-      </div>
-    </li>
-  </ul>
+    <ul>
+      <li tabindex="0">
+        <a href="https://mglmaynard.github.io/Portfolio/2024-H1_2025_Consumer_Goods_of_the_Philippines_CPI.html" target="_blank" id="project1_title" rel="noopener noreferrer">
+          2024 - H1 2025 Analysis of Consumer Price Index (CPI) of the Philippines
+        </a>
+        <div class="description" id="project1_desc">
+          A detailed CPI analysis using government datasets to understand macroeconomic trends and sector-specific price changes.
+        </div>
+      </li>
+      <li tabindex="0">
+        <a href="https://mglmaynard.github.io/Portfolio/Rental_Price_Distribution_Analysis_in_NCR_and_Region_IV-A_via_Kernel_Density_Estimation.html" target="_blank" id="project2_title" rel="noopener noreferrer">
+          Rental Price Distribution Analysis in NCR and Region IV-A via Kernel Density Estimation
+        </a>
+        <div class="description" id="project2_desc">
+          Uses kernel density plots to compare and visualize rental pricing trends between two major Philippine regions.
+        </div>
+      </li>
+      <li tabindex="0">
+        <a href="https://github.com/yourusername/project3" target="_blank" id="project3_title" rel="noopener noreferrer">
+          Project 3
+        </a>
+        <div class="description" id="project3_desc">
+          Placeholder description for a future project. Add details to describe purpose, tools, or insights.
+        </div>
+      </li>
+    </ul>
+  </main>
 
   <script>
-    function updateDateTime() {
-      const now = new Date();
-      const options = {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: true
-      };
-      const formattedDateTime = now.toLocaleString('en-US', options);
-      document.getElementById('datetime').textContent = formattedDateTime;
+    const translations = {
+      en: {
+        title: "My Portfolio Projects",
+        welcome: "Hey there! Welcome to my portfolio! I'm thrilled to share the work that reflects my curiosity, creativity, and deep passion for data, analytics, and impactful storytelling. Thank you for stopping by. I hope you find something here that inspires or informs.",
+        project1_title: "2024 - H1 2025 Analysis of Consumer Price Index (CPI) of the Philippines",
+        project1_desc: "A detailed CPI analysis using government datasets to understand macroeconomic trends and sector-specific price changes.",
+        project2_title: "Rental Price Distribution Analysis in NCR and Region IV-A via Kernel Density Estimation",
+        project2_desc: "Uses kernel density plots to compare and visualize rental pricing trends between two major Philippine regions.",
+        project3_title: "Project 3",
+        project3_desc: "Placeholder description for a future project. Add details to describe purpose, tools, or insights."
+      },
+      es: {
+        title: "Mis Proyectos de Portafolio",
+        welcome: "¡Hola! ¡Bienvenido a mi portafolio! Estoy emocionado de compartir trabajos que reflejan mi curiosidad, creatividad y profunda pasión por los datos, análisis y narración impactante. Gracias por visitar. Espero que encuentres algo que te inspire o informe.",
+        project1_title: "Análisis del Índice de Precios al Consumidor (IPC) de Filipinas 2024 - H1 2025",
+        project1_desc: "Un análisis detallado del IPC utilizando datos gubernamentales para entender tendencias macroeconómicas y cambios específicos por sector.",
+        project2_title: "Análisis de Distribución de Precios de Alquiler en NCR y Región IV-A mediante Estimación de Densidad Kernel",
+        project2_desc: "Utiliza gráficos de densidad kernel para comparar y visualizar tendencias de precios de alquiler entre dos regiones principales de Filipinas.",
+        project3_title: "Proyecto 3",
+        project3_desc: "Descripción provisional para un proyecto futuro. Agrega detalles para describir propósito, herramientas o ideas."
+      }
+    };
+
+    function setLanguage(lang) {
+      // Update button aria-pressed states
+      document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en' ? 'true' : 'false');
+      document.getElementById('btn-es').setAttribute('aria-pressed', lang === 'es' ? 'true' : 'false');
+
+      // Update text content based on selected language
+      document.getElementById('title').childNodes[2].nodeValue = " " + translations[lang].title;
+      document.getElementById('welcome').textContent = translations[lang].welcome;
+      document.getElementById('project1_title').textContent = translations[lang].project1_title;
+      document.getElementById('project1_desc').textContent = translations[lang].project1_desc;
+      document.getElementById('project2_title').textContent = translations[lang].project2_title;
+      document.getElementById('project2_desc').textContent = translations[lang].project2_desc;
+      document.getElementById('project3_title').textContent = translations[lang].project3_title;
+      document.getElementById('project3_desc').textContent = translations[lang].project3_desc;
     }
 
-    updateDateTime();
-    setInterval(updateDateTime, 1000);
+    // Default language
+    setLanguage('en');
   </script>
+
 </body>
 </html>
