@@ -40,8 +40,8 @@
     .chart-icon {
       width: 50px;
       height: 50px;
-      /* optional: adjust size */
     }
+
     .chart-path {
       stroke: silver;
       stroke-width: 2;
@@ -50,6 +50,7 @@
       stroke-dashoffset: 100;
       animation: draw 2s ease forwards;
     }
+
     @keyframes draw {
       to {
         stroke-dashoffset: 0;
@@ -69,24 +70,63 @@
       padding: 20px;
       border-left: 4px solid silver;
       border-radius: 8px;
-      transition: all 0.3s ease;
+      position: relative;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      overflow: hidden;
     }
 
     li:hover {
       background-color: #2a2a2a;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(191, 166, 107, 0.2); /* muted gold glow */
     }
 
+    /* Gold left-border animation */
+    li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 0%;
+      width: 4px;
+      background-color: #BFA66B; /* muted gold */
+      transition: height 0.4s ease;
+    }
+
+    li:hover::before {
+      height: 100%;
+    }
+
+    /* Link styling */
     a {
       color: white;
       text-decoration: none;
       font-size: 1.1rem;
       font-weight: 500;
+      display: block;
+      transition: color 0.3s ease;
     }
 
     a:hover {
-      color: silver;
+      color: #BFA66B; /* muted gold */
       text-decoration: underline;
+    }
+
+    /* Hidden description reveal */
+    .description {
+      color: #bbbbbb;
+      font-size: 0.95rem;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 0.4s ease, max-height 0.4s ease;
+      margin-top: 8px;
+    }
+
+    li:hover .description {
+      opacity: 1;
+      max-height: 100px;
     }
 
     @media (max-width: 600px) {
@@ -112,7 +152,6 @@
 </head>
 <body>
   <h1>
-    <!-- Inline SVG: stylized animated line chart -->
     <svg class="chart-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <polyline class="chart-path" points="5,45 20,30 35,40 50,25 60,35" />
       <circle cx="5" cy="45" r="2" fill="silver" />
@@ -128,22 +167,30 @@
     Hey there! Welcome to my portfolio! I'm thrilled to share the work that reflects my curiosity, creativity, and deep passion for data, analytics, and impactful storytelling. Thank you for stopping by. I hope you find something here that inspires or informs.
   </p>
 
-  
   <ul>
     <li>
       <a href="https://mglmaynard.github.io/Portfolio/2024-H1_2025_Consumer_Goods_of_the_Philippines_CPI.html" target="_blank">
         2024 - H1 2025 Analysis of Consumer Price Index (CPI) of the Philippines
       </a>
+      <div class="description">
+        A detailed CPI analysis using government datasets to understand macroeconomic trends and sector-specific price changes.
+      </div>
     </li>
     <li>
       <a href="https://mglmaynard.github.io/Portfolio/Rental_Price_Distribution_Analysis_in_NCR_and_Region_IV-A_via_Kernel_Density_Estimation.html" target="_blank">
         Rental Price Distribution Analysis in NCR and Region IV-A via Kernel Density Estimation
       </a>
+      <div class="description">
+        Uses kernel density plots to compare and visualize rental pricing trends between two major Philippine regions.
+      </div>
     </li>
     <li>
       <a href="https://github.com/yourusername/project3" target="_blank">
         Project 3
       </a>
+      <div class="description">
+        Placeholder description for a future project. Add details to describe purpose, tools, or insights.
+      </div>
     </li>
   </ul>
 </body>
