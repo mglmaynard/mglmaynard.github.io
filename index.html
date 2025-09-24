@@ -23,38 +23,33 @@
       line-height: 1.6;
     }
 
-    /* Header container for language selector and datetime */
+    /* Header with language, logo, and datetime */
     .header-top {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       max-width: 900px;
       margin: 0 auto 15px auto;
       gap: 10px;
+      position: relative;
     }
 
-    /* Language selector container */
+    /* Language selector container - left aligned */
     #google_translate_element {
-      text-align: left;
-      /* Adjust font size for better fit */
       font-size: 0.9rem;
+      flex: 0 0 auto;
+      text-align: left;
+      min-width: 150px;
     }
 
-    /* Date & Time styling */
-    #datetime {
-      font-size: 1.1rem;
-      color: silver;
-      font-weight: 500;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      text-align: right;
-      white-space: nowrap;
-      min-width: 200px;
-    }
-
-    /* Logo Styles */
+    /* Logo container - centered absolutely */
     .logo-container {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
       text-align: center;
-      margin-bottom: 15px;
+      flex: 0 0 auto;
+      width: 150px; /* same as logo max-width */
     }
 
     .logo {
@@ -62,6 +57,18 @@
       height: auto;
       border-radius: 50%;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Date & Time styling - right aligned */
+    #datetime {
+      font-size: 1.1rem;
+      color: silver;
+      font-weight: 500;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      flex: 0 0 auto;
+      min-width: 220px;
+      text-align: right;
+      white-space: nowrap;
     }
 
     h1 {
@@ -183,54 +190,40 @@
       outline-offset: 2px;
     }
 
-    @media (max-width: 600px) {
-      body {
-        padding: 20px 10px;
-      }
-
+    /* Responsive adjustments */
+    @media (max-width: 700px) {
       .header-top {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        max-width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        position: static;
       }
 
+      .logo-container {
+        position: static;
+        transform: none;
+        margin: 10px 0;
+        width: auto;
+      }
+
+      #google_translate_element,
       #datetime {
-        text-align: left;
         min-width: auto;
-      }
-
-      h1 {
-        font-size: 2rem;
-        flex-direction: column;
-      }
-
-      a {
-        font-size: 1rem;
-      }
-
-      .chart-icon {
-        width: 36px;
-        height: 36px;
-      }
-
-      .logo {
-        max-width: 100px;
+        flex: 1 1 100%;
+        text-align: center;
+        margin: 5px 0;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Top header with language selector left and datetime right -->
-  <div class="header-top">
+  <!-- Header: language left, logo center, datetime right -->
+  <div class="header-top" role="banner">
     <div id="google_translate_element" aria-label="Select Language for Automatic Translation"></div>
+    <div class="logo-container">
+      <img src="https://mglmaynard.github.io/Portfolio/logo/Logo.jpg" alt="Maynard's Logo" class="logo" />
+    </div>
     <div id="datetime" aria-live="polite" aria-atomic="true"></div>
   </div>
-
-  <!-- Logo at the top center -->
-  <header class="logo-container" role="banner">
-    <img src="https://mglmaynard.github.io/Portfolio/logo/Logo.jpg" alt="Maynard's Logo" class="logo" />
-  </header>
 
   <!-- Title with SVG -->
   <h1>
