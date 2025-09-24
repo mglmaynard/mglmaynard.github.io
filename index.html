@@ -19,8 +19,36 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #000000;
       color: #ffffff;
-      padding: 40px;
+      padding: 40px 20px 20px 20px;
       line-height: 1.6;
+    }
+
+    /* Header container for language selector and datetime */
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 900px;
+      margin: 0 auto 15px auto;
+      gap: 10px;
+    }
+
+    /* Language selector container */
+    #google_translate_element {
+      text-align: left;
+      /* Adjust font size for better fit */
+      font-size: 0.9rem;
+    }
+
+    /* Date & Time styling */
+    #datetime {
+      font-size: 1.1rem;
+      color: silver;
+      font-weight: 500;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: right;
+      white-space: nowrap;
+      min-width: 200px;
     }
 
     /* Logo Styles */
@@ -148,16 +176,6 @@
       max-height: 100px;
     }
 
-    /* Date & Time styling */
-    #datetime {
-      text-align: center;
-      font-size: 1.1rem;
-      color: silver;
-      margin-bottom: 30px;
-      font-weight: 500;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
     /* Keyboard focus outline for accessibility */
     a:focus,
     li:focus-within {
@@ -165,15 +183,21 @@
       outline-offset: 2px;
     }
 
-    /* Google Translate container styling */
-    #google_translate_element {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
     @media (max-width: 600px) {
       body {
-        padding: 20px;
+        padding: 20px 10px;
+      }
+
+      .header-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        max-width: 100%;
+      }
+
+      #datetime {
+        text-align: left;
+        min-width: auto;
       }
 
       h1 {
@@ -197,16 +221,16 @@
   </style>
 </head>
 <body>
-  <!-- Logo at the top -->
+  <!-- Top header with language selector left and datetime right -->
+  <div class="header-top">
+    <div id="google_translate_element" aria-label="Select Language for Automatic Translation"></div>
+    <div id="datetime" aria-live="polite" aria-atomic="true"></div>
+  </div>
+
+  <!-- Logo at the top center -->
   <header class="logo-container" role="banner">
     <img src="https://mglmaynard.github.io/Portfolio/logo/Logo.jpg" alt="Maynard's Logo" class="logo" />
   </header>
-
-  <!-- Google Translate Widget -->
-  <div id="google_translate_element" aria-label="Select Language for Automatic Translation"></div>
-
-  <!-- Live Date and Time -->
-  <div id="datetime" aria-live="polite" aria-atomic="true"></div>
 
   <!-- Title with SVG -->
   <h1>
@@ -277,7 +301,7 @@
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
-        includedLanguages: 'en,fil,es,zh-CN',
+        includedLanguages: 'en,fil,es,zh-CN,ja,de,it,ko,ilo,bcl,pag',
         layout: google.translate.TranslateElement.InlineLayout.SIMPLE
       }, 'google_translate_element');
     }
