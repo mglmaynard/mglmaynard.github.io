@@ -4,8 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Portfolio</title>
-
-  <!-- SEO -->
   <meta name="description" content="Portfolio showcasing data analytics and storytelling projects by Maynard." />
   <meta name="keywords" content="portfolio, data analytics, projects, storytelling, Maynard" />
   <meta name="author" content="Maynard" />
@@ -24,6 +22,89 @@
       color: #ffffff;
       padding: 40px 20px;
       line-height: 1.6;
+      transition: margin-left 0.3s ease;
+    }
+
+    /* Sidebar */
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #222;
+      padding-top: 60px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+
+    #sidebar.open {
+      left: 0;
+    }
+
+    #sidebar ul {
+      list-style: none;
+      padding-left: 20px;
+    }
+
+    #sidebar ul li {
+      margin: 20px 0;
+    }
+
+    #sidebar ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 600;
+      display: block;
+      transition: color 0.3s ease;
+    }
+
+    #sidebar ul li a:hover,
+    #sidebar ul li a:focus {
+      color: #BFA66B;
+      outline: none;
+      text-decoration: underline;
+    }
+
+    /* Hamburger Menu Button */
+    #menu-toggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      cursor: pointer;
+      z-index: 1100;
+      width: 30px;
+      height: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    #menu-toggle div {
+      width: 100%;
+      height: 4px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.4s ease;
+    }
+
+    /* Hamburger animation when open */
+    #menu-toggle.open div:nth-child(1) {
+      transform: rotate(-45deg) translate(-6px, 6px);
+    }
+
+    #menu-toggle.open div:nth-child(2) {
+      opacity: 0;
+    }
+
+    #menu-toggle.open div:nth-child(3) {
+      transform: rotate(45deg) translate(-6px, -6px);
+    }
+
+    /* Shift body content when sidebar open */
+    body.sidebar-open {
+      margin-left: 250px;
     }
 
     /* Header Top Section */
@@ -32,6 +113,8 @@
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
       margin-bottom: 30px;
+      position: relative;
+      z-index: 0;
     }
 
     .header-left {
@@ -97,14 +180,14 @@
       }
     }
 
-    ul {
+    ul.projects-list {
       list-style: none;
       max-width: 800px;
       margin: 0 auto;
       padding: 0;
     }
 
-    li {
+    ul.projects-list li {
       background-color: #1a1a1a;
       margin-bottom: 20px;
       padding: 20px;
@@ -116,15 +199,15 @@
       overflow: hidden;
     }
 
-    li:hover,
-    li:focus-within {
+    ul.projects-list li:hover,
+    ul.projects-list li:focus-within {
       background-color: #2a2a2a;
       transform: translateY(-3px);
       box-shadow: 0 4px 12px rgba(191, 166, 107, 0.2);
       outline: none;
     }
 
-    li::before {
+    ul.projects-list li::before {
       content: "";
       position: absolute;
       left: 0;
@@ -135,12 +218,12 @@
       transition: height 0.4s ease;
     }
 
-    li:hover::before,
-    li:focus-within::before {
+    ul.projects-list li:hover::before,
+    ul.projects-list li:focus-within::before {
       height: 100%;
     }
 
-    a {
+    ul.projects-list li a {
       color: white;
       text-decoration: none;
       font-size: 1.1rem;
@@ -149,14 +232,14 @@
       transition: color 0.3s ease;
     }
 
-    a:hover,
-    a:focus {
+    ul.projects-list li a:hover,
+    ul.projects-list li a:focus {
       color: #BFA66B;
       text-decoration: underline;
       outline: none;
     }
 
-    .description {
+    ul.projects-list .description {
       color: #bbbbbb;
       font-size: 0.95rem;
       opacity: 0;
@@ -166,8 +249,8 @@
       margin-top: 8px;
     }
 
-    li:hover .description,
-    li:focus-within .description {
+    ul.projects-list li:hover .description,
+    ul.projects-list li:focus-within .description {
       opacity: 1;
       max-height: 100px;
     }
@@ -196,6 +279,22 @@
 </head>
 <body>
 
+  <!-- Hamburger Menu Button -->
+  <button id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="sidebar">
+    <div></div>
+    <div></div>
+    <div></div>
+  </button>
+
+  <!-- Sidebar Navigation -->
+  <nav id="sidebar" aria-label="Games Navigation Menu">
+    <ul>
+      <li><a href="https://mglmaynard.github.io/Portfolio/Whack_a_Mole.html" target="_blank" rel="noopener noreferrer">Whack-a-Mole</a></li>
+      <li><a href="https://mglmaynard.github.io/Portfolio/Tic_Tac_Toe.html" target="_blank" rel="noopener noreferrer">Tic-Tac-Toe</a></li>
+      <li><a href="https://mglmaynard.github.io/Portfolio/Memory_Game.html" target="_blank" rel="noopener noreferrer">Memory Game</a></li>
+    </ul>
+  </nav>
+
   <!-- Language | Logo | Time -->
   <div class="header-top" role="banner">
     <div class="header-left">
@@ -209,7 +308,7 @@
 
   <!-- Title and Intro -->
   <h1>
-    <svg class="chart-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <svg class="chart-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
       <polyline class="chart-path" points="5,45 20,30 35,40 50,25 60,35" />
       <circle cx="5" cy="45" r="2" fill="silver" />
       <circle cx="20" cy="30" r="2" fill="silver" />
@@ -225,9 +324,9 @@
   </p>
 
   <!-- Projects List -->
-  <ul>
+  <ul class="projects-list">
     <li tabindex="0">
-      <a href="https://mglmaynard.github.io/Portfolio/2024-H1_2025_Consumer_Goods_of_the_Philippines_CPI.html" target="_blank">
+      <a href="https://mglmaynard.github.io/Portfolio/2024-H1_2025_Consumer_Goods_of_the_Philippines_CPI.html" target="_blank" rel="noopener noreferrer">
         2024 - H1 2025 Analysis of Consumer Price Index (CPI) of the Philippines
       </a>
       <div class="description">
@@ -235,7 +334,7 @@
       </div>
     </li>
     <li tabindex="0">
-      <a href="https://mglmaynard.github.io/Portfolio/Rental_Price_Distribution_Analysis_in_NCR_and_Region_IV-A_via_Kernel_Density_Estimation.html" target="_blank">
+      <a href="https://mglmaynard.github.io/Portfolio/Rental_Price_Distribution_Analysis_in_NCR_and_Region_IV-A_via_Kernel_Density_Estimation.html" target="_blank" rel="noopener noreferrer">
         Rental Price Distribution Analysis in NCR and Region IV-A via Kernel Density Estimation
       </a>
       <div class="description">
@@ -243,7 +342,7 @@
       </div>
     </li>
     <li tabindex="0">
-      <a href="https://github.com/yourusername/project3" target="_blank">
+      <a href="https://github.com/yourusername/project3" target="_blank" rel="noopener noreferrer">
         Project 3
       </a>
       <div class="description">
@@ -272,6 +371,29 @@
     }
     updateDateTime();
     setInterval(updateDateTime, 1000);
+
+    // Sidebar toggle logic
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = sidebar.classList.toggle('open');
+      menuToggle.classList.toggle('open');
+      document.body.classList.toggle('sidebar-open');
+
+      // Update aria-expanded for accessibility
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Optional: Close sidebar if clicked outside (for better UX)
+    document.addEventListener('click', (e) => {
+      if (!sidebar.contains(e.target) && !menuToggle.contains(e.target) && sidebar.classList.contains('open')) {
+        sidebar.classList.remove('open');
+        menuToggle.classList.remove('open');
+        document.body.classList.remove('sidebar-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
   </script>
 
   <!-- Google Translate Widget -->
