@@ -32,7 +32,7 @@
       width: 250px;
       height: 100%;
       background-color: #222;
-      padding-top: 20px 15px;
+      padding: 20px 15px; /* fixed padding */
       overflow-x: hidden;
       z-index: 1000;
       display: flex;
@@ -269,6 +269,12 @@
       <li><a href="https://mglmaynard.github.io/Portfolio/snake_and_ladder.html" target="_blank" rel="noopener noreferrer">Snake and Ladder</a></li>
       <li><a href="https://mglmaynard.github.io/Portfolio/rock_paper_scissor.html" target="_blank" rel="noopener noreferrer">Rock Paper Scissor</a></li>
       <li><a href="https://mglmaynard.github.io/Portfolio/minesweeper.html" target="_blank" rel="noopener noreferrer">Minesweeper</a></li>
+
+      <!-- New games added below -->
+      <li><a href="https://mglmaynard.github.io/Portfolio/2048.html" target="_blank" rel="noopener noreferrer">2048</a></li>
+      <li><a href="https://mglmaynard.github.io/Portfolio/Maze.html" target="_blank" rel="noopener noreferrer">Maze Solver</a></li>
+      <li><a href="https://mglmaynard.github.io/Portfolio/trivia_game.html" target="_blank" rel="noopener noreferrer">Trivia Quiz</a></li>
+      <li><a href="https://mglmaynard.github.io/Portfolio/word_game.html" target="_blank" rel="noopener noreferrer">Word Guessing Game</a></li>
     </ul>
   </nav>
 
@@ -350,16 +356,25 @@
     setInterval(updateDateTime, 1000);
   </script>
 
-  <!-- Google Translate Widget -->
+  <!-- Google Translate -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        autoDisplay: false
-      }, 'google_translate_element');
+      new google.translate.TranslateElement(
+        {
+          pageLanguage: 'en',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          autoDisplay: false
+        },
+        'google_translate_element'
+      );
     }
   </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async defer></script>
+  <script
+    type="text/javascript"
+    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    async
+    defer
+  ></script>
+
 </body>
 </html>
