@@ -21,6 +21,7 @@
       color: #fff;
       padding: 40px 20px;
       line-height: 1.6;
+      margin-left: 250px; /* Always leave space for sidebar */
       transition: margin-left 0.3s ease;
     }
 
@@ -28,57 +29,36 @@
     #sidebar {
       position: fixed;
       top: 0; left: 0;
-      width: 60px;
+      width: 250px;
       height: 100%;
       background-color: #222;
-      padding-top: 20px;
-      transition: width 0.3s ease;
+      padding-top: 20px 15px;
       overflow-x: hidden;
       z-index: 1000;
       display: flex;
       flex-direction: column;
-      align-items: center;
-    }
-    #sidebar.expanded {
-      width: 250px;
-      padding-left: 15px;
       align-items: flex-start;
-    }
-
-    /* Shift body content when sidebar expanded */
-    body.sidebar-expanded {
-      margin-left: 250px;
+      padding-left: 15px;
     }
 
     /* Controller Icon + Text container */
     #sidebar #games-toggle {
       display: flex;
       align-items: center;
-      cursor: pointer;
+      cursor: default;
       color: white;
       margin-bottom: 30px;
       user-select: none;
       width: 100%;
-      padding-left: 15px;
       font-weight: 600;
       font-size: 1.25rem;
-      transition: color 0.3s ease;
-    }
-    #sidebar #games-toggle:hover,
-    #sidebar #games-toggle:focus {
-      color: #BFA66B;
-      outline: none;
+      /* No hover/focus effects because not clickable */
     }
     #sidebar #games-toggle img {
       width: 32px;
       height: 32px;
       margin-right: 10px;
       filter: brightness(0) invert(1);
-      transition: filter 0.3s ease;
-    }
-    #sidebar #games-toggle:hover img,
-    #sidebar #games-toggle:focus img {
-      filter: brightness(0) invert(0.75) sepia(1) saturate(5) hue-rotate(35deg);
     }
 
     /* Games list */
@@ -86,12 +66,9 @@
       list-style: none;
       padding-left: 0;
       width: 100%;
-      display: none;
+      display: flex;
       flex-direction: column;
       gap: 15px;
-    }
-    #sidebar.expanded #games-list {
-      display: flex;
     }
     #games-list li a {
       display: block;
@@ -238,6 +215,27 @@
       opacity: 1;
       max-height: 100px;
     }
+    @media (max-width: 900px) {
+      body {
+        margin-left: 60px; /* smaller sidebar on small screens */
+      }
+      #sidebar {
+        width: 60px;
+        padding-left: 10px;
+        align-items: center;
+      }
+      #sidebar #games-toggle {
+        justify-content: center;
+        font-size: 1rem;
+        padding-left: 0;
+      }
+      #sidebar #games-toggle span {
+        display: none;
+      }
+      #games-list {
+        display: none; /* hide list on small screens */
+      }
+    }
     @media (max-width: 600px) {
       h1 {
         font-size: 2rem;
@@ -253,9 +251,6 @@
       .header-right {
         font-size: 0.9rem;
       }
-      body.sidebar-expanded {
-        margin-left: 60px; /* prevent big left margin on small screens */
-      }
     }
   </style>
 </head>
@@ -263,7 +258,7 @@
 
   <!-- Sidebar Navigation -->
   <nav id="sidebar" aria-label="Games Navigation Menu">
-    <div id="games-toggle" tabindex="0" role="button" aria-expanded="false" aria-controls="games-list">
+    <div id="games-toggle" aria-disabled="true">
       <img src="https://cdn-icons-png.flaticon.com/512/3082/3082624.png" alt="Game controller icon" />
       <span>Games</span>
     </div>
@@ -353,23 +348,6 @@
     }
     updateDateTime();
     setInterval(updateDateTime, 1000);
-
-    // Sidebar expand/collapse logic
-    const gamesToggle = document.getElementById('games-toggle');
-    const sidebar = document.getElementById('sidebar');
-
-    gamesToggle.addEventListener('click', () => {
-      const expanded = sidebar.classList.toggle('expanded');
-      gamesToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-      document.body.classList.toggle('sidebar-expanded', expanded);
-    });
-
-    gamesToggle.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        gamesToggle.click();
-      }
-    });
   </script>
 
   <!-- Google Translate Widget -->
