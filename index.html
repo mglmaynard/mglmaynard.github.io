@@ -36,6 +36,9 @@
       padding-top: 60px;
       transition: left 0.3s ease;
       z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
     }
 
     #sidebar.open {
@@ -44,27 +47,48 @@
 
     #sidebar ul {
       list-style: none;
-      padding-left: 20px;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
     }
 
     #sidebar ul li {
-      margin: 20px 0;
+      margin: 0;
+      text-align: center;
     }
 
     #sidebar ul li a {
+      display: inline-block;
       color: white;
       text-decoration: none;
       font-size: 1.2rem;
       font-weight: 600;
-      display: block;
-      transition: color 0.3s ease;
+      outline-offset: 4px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      position: relative;
+    }
+
+    /* Controller Icon */
+    #sidebar ul li a img {
+      width: 40px;
+      height: 40px;
+      filter: brightness(0) invert(1);
+      transition: filter 0.3s ease, transform 0.3s ease;
+      vertical-align: middle;
+    }
+
+    /* Hover/focus effects */
+    #sidebar ul li a:hover img,
+    #sidebar ul li a:focus img {
+      filter: brightness(0) invert(0.75) sepia(1) saturate(5) hue-rotate(35deg);
+      transform: scale(1.15);
     }
 
     #sidebar ul li a:hover,
     #sidebar ul li a:focus {
-      color: #BFA66B;
+      text-decoration: none;
       outline: none;
-      text-decoration: underline;
     }
 
     /* Hamburger Menu Button */
@@ -289,9 +313,36 @@
   <!-- Sidebar Navigation -->
   <nav id="sidebar" aria-label="Games Navigation Menu">
     <ul>
-      <li><a href="https://mglmaynard.github.io/Portfolio/Whack_a_Mole.html" target="_blank" rel="noopener noreferrer">Whack-a-Mole</a></li>
-      <li><a href="https://mglmaynard.github.io/Portfolio/Tic_Tac_Toe.html" target="_blank" rel="noopener noreferrer">Tic-Tac-Toe</a></li>
-      <li><a href="https://mglmaynard.github.io/Portfolio/Memory_Game.html" target="_blank" rel="noopener noreferrer">Memory Game</a></li>
+      <li>
+        <a href="https://mglmaynard.github.io/Portfolio/Whack_a_Mole.html" target="_blank" rel="noopener noreferrer" aria-label="Whack-a-Mole game">
+          <img src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="" />
+        </a>
+      </li>
+      <li>
+        <a href="https://mglmaynard.github.io/Portfolio/Tic_Tac_Toe.html" target="_blank" rel="noopener noreferrer" aria-label="Tic-Tac-Toe game">
+          <img src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="" />
+        </a>
+      </li>
+      <li>
+        <a href="https://mglmaynard.github.io/Portfolio/Memory_Game.html" target="_blank" rel="noopener noreferrer" aria-label="Memory Game">
+          <img src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="" />
+        </a>
+      </li>
+      <li>
+        <a href="https://mglmaynard.github.io/Portfolio/snake_and_ladder.html" target="_blank" rel="noopener noreferrer" aria-label="Snake and Ladder game">
+          <img src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="" />
+        </a>
+      </li>
+      <li>
+        <a href="https://mglmaynard.github.io/Portfolio/rock_paper_scissor.html" target="_blank" rel="noopener noreferrer" aria-label="Rock Paper Scissor game">
+          <img src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="" />
+        </a>
+      </li>
+      <li>
+        <a href="https://mglmaynard.github.io/Portfolio/minesweeper.html" target="_blank" rel="noopener noreferrer" aria-label="Minesweeper game">
+          <img src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="" />
+        </a>
+      </li>
     </ul>
   </nav>
 
@@ -406,7 +457,7 @@
       }, 'google_translate_element');
     }
   </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async defer></script>
 
 </body>
 </html>
