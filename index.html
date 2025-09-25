@@ -21,7 +21,7 @@
       color: #fff;
       padding: 40px 20px;
       line-height: 1.6;
-      margin-left: 250px; /* Always leave space for sidebar */
+      margin-left: 250px;
       transition: margin-left 0.3s ease;
     }
 
@@ -32,7 +32,7 @@
       width: 250px;
       height: 100%;
       background-color: #222;
-      padding: 20px 15px; /* fixed padding */
+      padding: 20px 15px;
       overflow-x: hidden;
       z-index: 1000;
       display: flex;
@@ -41,7 +41,6 @@
       padding-left: 15px;
     }
 
-    /* Controller Icon + Text container */
     #sidebar #games-toggle {
       display: flex;
       align-items: center;
@@ -52,7 +51,6 @@
       width: 100%;
       font-weight: 600;
       font-size: 1.25rem;
-      /* No hover/focus effects because not clickable */
     }
     #sidebar #games-toggle img {
       width: 32px;
@@ -61,7 +59,6 @@
       filter: brightness(0) invert(1);
     }
 
-    /* Games list */
     #games-list {
       list-style: none;
       padding-left: 0;
@@ -87,7 +84,6 @@
       text-decoration: none;
     }
 
-    /* Other content styling (header, projects, etc.) unchanged */
     .header-top {
       display: grid;
       grid-template-columns: 1fr auto 1fr;
@@ -96,20 +92,14 @@
       position: relative;
       z-index: 0;
     }
-    .header-left {
-      justify-self: start;
-    }
-    .header-center {
-      justify-self: center;
-      text-align: center;
-    }
+    .header-left { justify-self: start; }
+    .header-center { justify-self: center; text-align: center; }
     .header-right {
       justify-self: end;
       font-size: 1.1rem;
       color: silver;
       font-weight: 500;
       white-space: nowrap;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     .logo {
       max-width: 150px;
@@ -117,6 +107,7 @@
       border-radius: 50%;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
+
     h1 {
       text-align: center;
       font-size: 2.5rem;
@@ -149,6 +140,7 @@
         stroke-dashoffset: 0;
       }
     }
+
     ul.projects-list {
       list-style: none;
       max-width: 800px;
@@ -215,10 +207,9 @@
       opacity: 1;
       max-height: 100px;
     }
+
     @media (max-width: 900px) {
-      body {
-        margin-left: 60px; /* smaller sidebar on small screens */
-      }
+      body { margin-left: 60px; }
       #sidebar {
         width: 60px;
         padding-left: 10px;
@@ -233,9 +224,10 @@
         display: none;
       }
       #games-list {
-        display: none; /* hide list on small screens */
+        display: none;
       }
     }
+
     @media (max-width: 600px) {
       h1 {
         font-size: 2rem;
@@ -263,35 +255,33 @@
       <span>Games</span>
     </div>
     <ul id="games-list">
-      <li><a href="https://mglmaynard.github.io/Portfolio/Whack_a_Mole.html" target="_blank" rel="noopener noreferrer">Whack-a-Mole</a></li>
-      <li><a href="https://mglmaynard.github.io/Portfolio/Tic_Tac_Toe.html" target="_blank" rel="noopener noreferrer">Tic-Tac-Toe</a></li>
-      <li><a href="https://mglmaynard.github.io/Portfolio/Memory_Game.html" target="_blank" rel="noopener noreferrer">Memory Game</a></li>
-      <li><a href="https://mglmaynard.github.io/Portfolio/snake_and_ladder.html" target="_blank" rel="noopener noreferrer">Snake and Ladder</a></li>
-      <li><a href="https://mglmaynard.github.io/Portfolio/rock_paper_scissor.html" target="_blank" rel="noopener noreferrer">Rock Paper Scissor</a></li>
-      <li><a href="https://mglmaynard.github.io/Portfolio/minesweeper.html" target="_blank" rel="noopener noreferrer">Minesweeper</a></li>
-
-      <!-- New games added below -->
-      <li><a href="https://mglmaynard.github.io/Portfolio/2048.html" target="_blank" rel="noopener noreferrer">2048</a></li>
-      <li><a href="https://mglmaynard.github.io/Portfolio/Maze.html" target="_blank" rel="noopener noreferrer">Maze Solver</a></li>
-      <li><a href="https://mglmaynard.github.io/Portfolio/trivia_game.html" target="_blank" rel="noopener noreferrer">Trivia Quiz</a></li>
-      <li><a href="https://mglmaynard.github.io/Portfolio/word_game.html" target="_blank" rel="noopener noreferrer">Word Guessing Game</a></li>
+      <li><a href="https://mglmaynard.github.io/Portfolio/Whack_a_Mole.html" target="_blank">Whack-a-Mole</a></li>
+      <li><a href="https://mglmaynard.github.io/Portfolio/Tic_Tac_Toe.html" target="_blank">Tic-Tac-Toe</a></li>
+      <li><a href="https://mglmaynard.github.io/Portfolio/Memory_Game.html" target="_blank">Memory Game</a></li>
+      <li><a href="https://mglmaynard.github.io/Portfolio/snake_and_ladder.html" target="_blank">Snake and Ladder</a></li>
+      <li><a href="https://mglmaynard.github.io/Portfolio/rock_paper_scissor.html" target="_blank">Rock Paper Scissor</a></li>
+      <li><a href="https://mglmaynard.github.io/Portfolio/minesweeper.html" target="_blank">Minesweeper</a></li>
+      <li><a href="https://mglmaynard.github.io/Portfolio/2048.html" target="_blank">2048</a></li>
+      <li><a href="https://mglmaynard.github.io/Portfolio/Maze.html" target="_blank">Maze Solver</a></li>
+      <li><a href="https://mglmaynard.github.io/Portfolio/trivia_game.html" target="_blank">Trivia Quiz</a></li>
+      <li><a href="https://mglmaynard.github.io/Portfolio/word_game.html" target="_blank">Word Guessing Game</a></li>
     </ul>
   </nav>
 
-  <!-- Language | Logo | Time -->
-  <div class="header-top" role="banner">
+  <!-- Header -->
+  <div class="header-top">
     <div class="header-left">
       <div id="google_translate_element" aria-label="Select Language"></div>
     </div>
-    <div class="header-center logo-container">
+    <div class="header-center">
       <img src="https://mglmaynard.github.io/Portfolio/logo/Logo.jpg" alt="Maynard's Logo" class="logo" />
     </div>
     <div class="header-right" id="datetime" aria-live="polite" aria-atomic="true"></div>
   </div>
 
-  <!-- Title and Intro -->
+  <!-- Title -->
   <h1>
-    <svg class="chart-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <svg class="chart-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <polyline class="chart-path" points="5,45 20,30 35,40 50,25 60,35" />
       <circle cx="5" cy="45" r="2" fill="silver" />
       <circle cx="20" cy="30" r="2" fill="silver" />
@@ -309,7 +299,7 @@
   <!-- Projects List -->
   <ul class="projects-list">
     <li tabindex="0">
-      <a href="https://mglmaynard.github.io/Portfolio/2024-H1_2025_Consumer_Goods_of_the_Philippines_CPI.html" target="_blank" rel="noopener noreferrer">
+      <a href="https://mglmaynard.github.io/Portfolio/2024-H1_2025_Consumer_Goods_of_the_Philippines_CPI.html" target="_blank">
         2024 - H1 2025 Analysis of Consumer Price Index (CPI) of the Philippines
       </a>
       <div class="description">
@@ -317,7 +307,7 @@
       </div>
     </li>
     <li tabindex="0">
-      <a href="https://mglmaynard.github.io/Portfolio/Rental_Price_Distribution_Analysis_in_NCR_and_Region_IV-A_via_Kernel_Density_Estimation.html" target="_blank" rel="noopener noreferrer">
+      <a href="https://mglmaynard.github.io/Portfolio/Rental_Price_Distribution_Analysis_in_NCR_and_Region_IV-A_via_Kernel_Density_Estimation.html" target="_blank">
         Rental Price Distribution Analysis in NCR and Region IV-A via Kernel Density Estimation
       </a>
       <div class="description">
@@ -325,11 +315,11 @@
       </div>
     </li>
     <li tabindex="0">
-      <a href="https://github.com/yourusername/project3" target="_blank" rel="noopener noreferrer">
-        Project 3
+      <a href="https://mglmaynard.github.io/Portfolio/Random_Forest_on_UC_Irvins_Student_Performance.html" target="_blank">
+        Random Forest on UC Irvine's Student Performance
       </a>
       <div class="description">
-        Placeholder description for a future project. Add details to describe purpose, tools, or insights.
+        Applied Random Forest algorithm to the UCI Student Performance dataset to predict academic outcomes based on demographics, study habits, and past grades.
       </div>
     </li>
   </ul>
