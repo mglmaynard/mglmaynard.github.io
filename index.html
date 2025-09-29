@@ -39,7 +39,6 @@
       flex-direction: column;
       align-items: flex-start;
       padding-left: 15px;
-      transition: width 0.3s ease; /* smooth expand/collapse */
     }
 
     #games-toggle {
@@ -66,24 +65,13 @@
       filter: brightness(0) invert(1);
     }
 
-    /* Games list */
     #games-list {
       list-style: none;
       padding-left: 0;
       width: 100%;
+      display: flex;
       flex-direction: column;
       gap: 15px;
-      opacity: 0;
-      max-height: 0;
-      overflow: hidden;
-      display: none;
-      transition: opacity 0.3s ease, max-height 0.3s ease;
-    }
-
-    #sidebar.sidebar-open #games-list {
-      display: flex;
-      opacity: 1;
-      max-height: 500px; /* enough to reveal all items */
     }
 
     #games-list li a {
@@ -104,7 +92,6 @@
       text-decoration: none;
     }
 
-    /* Header */
     .header-top {
       display: grid;
       grid-template-columns: 1fr auto 1fr;
@@ -162,10 +149,11 @@
     }
 
     @keyframes draw {
-      to { stroke-dashoffset: 0; }
+      to {
+        stroke-dashoffset: 0;
+      }
     }
 
-    /* Projects */
     ul.projects-list {
       list-style: none;
       max-width: 800px;
@@ -241,17 +229,12 @@
       max-height: 100px;
     }
 
-    /* Responsive */
     @media (max-width: 900px) {
       body { margin-left: 60px; }
       #sidebar {
         width: 60px;
+        padding-left: 10px;
         align-items: center;
-      }
-
-      #sidebar.sidebar-open {
-        width: 250px !important; /* expanded width */
-        align-items: flex-start;
       }
 
       #games-toggle {
@@ -260,7 +243,16 @@
         padding-left: 0;
       }
 
-      #games-toggle span { display: none; }
+      #games-toggle span {
+        display: none;
+      }
+
+      #games-list {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+      }
     }
 
     @media (max-width: 600px) {
@@ -269,9 +261,18 @@
         flex-direction: column;
       }
 
-      .chart-icon { width: 36px; height: 36px; }
-      .logo { max-width: 100px; }
-      .header-right { font-size: 0.9rem; }
+      .chart-icon {
+        width: 36px;
+        height: 36px;
+      }
+
+      .logo {
+        max-width: 100px;
+      }
+
+      .header-right {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
@@ -398,11 +399,11 @@
   <!-- Games Toggle Script -->
   <script>
     const gamesToggle = document.getElementById('games-toggle');
-    const sidebar = document.getElementById('sidebar');
+    const gamesList = document.getElementById('games-list');
 
     gamesToggle.addEventListener('click', () => {
-      const isOpen = sidebar.classList.contains('sidebar-open');
-      sidebar.classList.toggle('sidebar-open', !isOpen);
+      const isOpen = gamesList.style.display === 'flex';
+      gamesList.style.display = isOpen ? 'none' : 'flex';
       gamesToggle.setAttribute('aria-expanded', String(!isOpen));
     });
 
